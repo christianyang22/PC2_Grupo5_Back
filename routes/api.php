@@ -50,6 +50,10 @@ Route::put('/update-profile', [UserController::class, 'updateProfile']);
 Route::delete('/delete-account', [UserController::class, 'deleteAccount']);
 Route::get('/users', [UserController::class, 'getUsers']);
 Route::get('/users/search/{email}', [UserController::class, 'searchByEmail']);
+Route::get('/users/{id}', [UserController::class, 'getUserById']);
+Route::get('/users/search/username/{username}', [UserController::class, 'searchByUsername']);
+    
+
 
 // Rutas para Favoritos
 Route::post('/favourites/add', [FavouriteController::class, 'addToFavourites']);

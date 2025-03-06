@@ -54,4 +54,6 @@ class AuthController extends Controller
     {
         return response()->json(Auth::user());
     }
+
+    
 }

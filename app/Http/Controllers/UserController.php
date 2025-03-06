@@ -48,4 +48,44 @@ class UserController extends Controller
     {
         return response()->json(User::where('email', $email)->first());
     }
+
+    public function getUserById($id)
+    {
+    $user = User::find($id);
+
+    if (!$user) {
+        return response()->json(['message' => 'Usuario no encontrado'], 404);
+    }
+
+    return response()->json($user);
+    }
+
+    public function getUsers()
+    {
+    return response()->json(User::all());
+    }
+
+    public function searchByEmail($email)
+    {
+    $user = User::where('email', $email)->first();
+
+    if (!$user) {
+        return response()->json(['message' => 'No se encuentra ese usuario en nuestra base de datos'], 404);
+    }
+
+    return response()->json($user);
+    }
+
+    public function searchByUsername($username)
+    {
+    $user = User::where('username', $username)->first();
+
+    if (!$user) {
+        return response()->json(['message' => 'No se encuentra ese usuario en nuestra base de datos'], 404);
+    }
+
+    return response()->json($user);
+    }
+
+
 }

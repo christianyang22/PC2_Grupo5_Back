@@ -30,4 +30,23 @@ class FavouriteController extends Controller
         Favourite::findOrFail($id)->delete();
         return response()->json(['message' => 'Producto eliminado de favoritos']);
     }
+
+    public function updateFavouriteQuantity(Request $request, $id)
+    {
+    $request->validate([
+        'quantity' => 'required|integer|min:1'
+    ]);
+
+    $favourite = Favourite::find($id);
+
+    if (!$favourite) {
+        return response()->json(['message' => 'Favorito no encontrado'], 404);
+    }
+
+    $favourite->quantity = $request->quantity;
+    $favourite->save();
+
+    return response()->json(['message' => 'Cantidad de favorito actualizada', 'favourite' => $favourite]);
+    }
+
 }

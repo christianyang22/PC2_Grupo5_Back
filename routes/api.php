@@ -7,7 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\ComparisonController;
 
-//Debo revisar si falta por crear alguna función en los controladores, prueba
+//Debo revisar si falta por crear alguna función en los controladores, pruebaaaa
 
 Route::get('/test', function () {
     return response()->json(['message' => 'API funcionando']);

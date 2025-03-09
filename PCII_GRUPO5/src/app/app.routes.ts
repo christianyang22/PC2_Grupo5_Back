@@ -1,7 +1,18 @@
+// app.routes.ts
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { ProductosComponent } from './productos/productos.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },  //Home por defecto
-  { path: 'home', component: HomeComponent },  // Ruta para eñ Home
+  // Ruta padre: 'home'
+  {
+    path: 'home',
+    component: HomeComponent,
+    children: [
+      // Ruta hija: 'home/productos'
+      { path: 'productos', component: ProductosComponent },
+      // Aquí puedes añadir más rutas hijas
+    ]
+  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

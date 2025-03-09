@@ -1,20 +1,24 @@
-<!-- Falta por crear footer , añadir info de usuario, logos, etc -->
 <header>
-  <div class="logo">
+  <div class="logo-usuario">
+    <!-- Usamos la ruta relativa 'img/carrito.jpg' -->
+    <img src="img/carrito.jpg" alt="Carrito" class="carrito-icon">
+    
     <h1>Click&Shop</h1>
+    <span class="nombre-usuario">Bienvenido, "nombre-usuario"</span>
+    
+    
   </div>
+
   <nav class="navegacion">
-    <a href="#">Inicio</a>
-    <a href="#">Productos</a>
-    <a href="#">Favoritos</a>
-    <a href="#">Filtros</a>
+    <!-- Todos los enlaces con routerLink -->
+    <a routerLink="/home">Home</a>
+    <!-- Aquí, si quieres que sea hija de 'home', podrías usar routerLink="productos" también -->
+    <a routerLink="/productos">Productos</a>
+    <a routerLink="/favoritos">Favoritos</a>
+    <a routerLink="/filtros">Filtros</a>
   </nav>
-  <div class="informacion-usuario">
-    <!--Aquí pondremos en el futuro la información del usuario -->
-  </div>
 </header>
 
-<!-- Contenido principal -->
 <main class="contenido-principal">
   <div class="formulario-login">
     <label for="usuario">Usuario</label>
@@ -30,7 +34,15 @@
   </div>
 </main>
 
-<!-- Pie de página -->
 <footer>
-  
+  <div class="footer-content">
+    <span class="phone">+34 0000000000</span>
+    <span class="separador"> | </span>
+    <span class="close-button">X</span>
+    <span class="separador"> | </span>
+    <!-- Usa &#64; si Angular da error con la arroba -->
+    <span class="email">clickshop&#64;gmail.com</span>
+  </div>
 </footer>
+
+

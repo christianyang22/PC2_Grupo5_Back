@@ -1,7 +1,7 @@
 <header>
   <div class="logo-usuario">
-    <!-- Usamos la ruta relativa 'img/carrito.jpg' -->
-    <img src="img/carrito.jpg" alt="Carrito" class="carrito-icon">
+
+    <img src="carrito.png" alt="Carrito" class="carrito-icon">
     
     <h1>Click&Shop</h1>
     <span class="nombre-usuario">Bienvenido, "nombre-usuario"</span>
@@ -10,12 +10,10 @@
   </div>
 
   <nav class="navegacion">
-    <!-- Todos los enlaces con routerLink -->
-    <a routerLink="/home">Home</a>
-    <!-- Aquí, si quieres que sea hija de 'home', podrías usar routerLink="productos" también -->
-    <a routerLink="/productos">Productos</a>
-    <a routerLink="/favoritos">Favoritos</a>
-    <a routerLink="/filtros">Filtros</a>
+    <a href="/home">Home</a>
+    <a href="/productos">Productos</a>
+    <a href="/favoritos">Favoritos</a>
+    <a href="/filtros">Filtros</a>
   </nav>
 </header>
 
@@ -40,7 +38,7 @@
     <span class="separador"> | </span>
     <span class="close-button">X</span>
     <span class="separador"> | </span>
-    <!-- Usa &#64; si Angular da error con la arroba -->
+
     <span class="email">clickshop&#64;gmail.com</span>
   </div>
 </footer>

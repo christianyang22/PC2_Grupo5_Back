@@ -1,58 +1,45 @@
 <header>
-    <nav class="navbar">
-      <!-- Sección izquierda: Home, Supermercado -->
-      <div class="nav-left">
-        <!-- Navegar a home con Angular Router -->
-        <a routerLink="/home">Home</a>
-        <!-- “Supermercado” sigue con href, si no tienes ruta para él -->
-        <a href="#">Supermercado</a>
-      </div>
-  
-      <!-- Logo en el centro -->
-      <h1 class="logo">Click&Shop</h1>
-  
-      <!-- Sección derecha: Favoritos, Filtros -->
-      <div class="nav-right">
-        <!-- Si tienes rutas para 'favoritos' y 'filtros', usa routerLink; si no, deja href="#" -->
-        <a routerLink="/favoritos">Favoritos</a>
-        <a routerLink="/filtros">Filtros</a>
-      </div>
-    </nav>
-  </header>
-  
-  <main>
-    <!-- Buscador -->
-    <div class="search-container">
-      <!-- Input de búsqueda -->
-      <input type="text" class="search-input" placeholder="search">
-      <!-- Botón o ícono (puedes reemplazarlo por un ícono de lupa) -->
-      <button class="search-button">Buscar</button>
+  <nav class="barra-navegacion">
+    <div class="navegacion-izquierda">
+      <a href="/home">Inicio</a>
+      <a href="/supermercados">Supermercado</a>
     </div>
-  
-    <!-- Sección de productos -->
-    <section class="products-grid">
-      <!-- 10 tarjetas de producto (placeholders) -->
-      <div class="product-card"></div>
-      <div class="product-card"></div>
-      <div class="product-card"></div>
-      <div class="product-card"></div>
-      <div class="product-card"></div>
-      <div class="product-card"></div>
-      <div class="product-card"></div>
-      <div class="product-card"></div>
-      <div class="product-card"></div>
-      <div class="product-card"></div>
-    </section>
-  </main>
-  
-  <footer>
-    <div class="footer-content">
-      <span class="phone">+34 0000000000</span>
-      <span class="separador"> | </span>
-      <span class="close-button">X</span>
-      <span class="separador"> | </span>
-      <!-- Sustituye la arroba por &#64; si Angular da error con @ -->
-      <span class="email">clickshop&#64;gmail.com</span>
+
+    <h1 class="logo">Click&Shop</h1>
+
+    <div class="navegacion-derecha">
+      <a  href="/favoritos">Favoritos</a>
+      <a href="/filtros">Filtros</a>
     </div>
-  </footer>
-  
+  </nav>
+</header>
+
+<main>
+  <div class="contenedor-busqueda">
+    <input type="text" class="entrada-busqueda" placeholder="Buscar">
+    <button class="boton-buscar">Buscar</button>
+  </div>
+
+  <section class="cuadrícula-productos">
+    <div class="tarjeta-producto"></div>
+    <div class="tarjeta-producto"></div>
+    <div class="tarjeta-producto"></div>
+    <div class="tarjeta-producto"></div>
+    <div class="tarjeta-producto"></div>
+    <div class="tarjeta-producto"></div>
+    <div class="tarjeta-producto"></div>
+    <div class="tarjeta-producto"></div>
+    <div class="tarjeta-producto"></div>
+    <div class="tarjeta-producto"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="contenido-pie">
+    <span class="telefono">+34 0000000000</span>
+    <span class="separador"> | </span>
+    <span class="boton-cerrar">X</span>
+    <span class="separador"> | </span>
+    <span class="email">clickshop&#64;gmail.com</span>
+  </div>
+</footer>

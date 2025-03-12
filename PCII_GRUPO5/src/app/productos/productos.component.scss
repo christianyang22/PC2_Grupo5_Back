@@ -26,18 +26,14 @@ header {
     a {
         margin-right: 20px;
         text-decoration: none;
-        color: darkslategray; 
+        color: black; 
         font-size: 16px;
-
-        &:last-child {
-        margin-right: 0;
-        }
     }
 }
 
 .logo {
-    font-size: 24px;
-    color: darkslategray;
+    font-size: 40px;
+    color: black;
 }
 
 main {
@@ -69,10 +65,6 @@ main {
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-
-    &:hover {
-        background-color: mediumblue; 
-    }
 }
 
 .cuadrícula-productos {
@@ -92,6 +84,9 @@ footer {
     background-color: lightgray; 
     padding: 10px 20px;
     text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .contenido-pie {
@@ -107,4 +102,11 @@ footer {
 
 .separador {
     color: gray;
+}
+
+.perfil {
+    width: 40px; /* Ajusta según necesidad */
+    height: 40px;
+    object-fit: cover; /* Evita deformaciones */
+    border-radius: 50%; /* Hace la imagen circular */
 }

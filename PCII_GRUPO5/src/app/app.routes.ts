@@ -6,6 +6,6 @@ import { SupermercadosComponent } from './supermercados/supermercados.component'
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'productos', component: ProductosComponent }, 
-  { path: 'supermercado', component: SupermercadosComponent },
+  { path: 'supermercados', component: SupermercadosComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

@@ -1,12 +1,18 @@
+// Importar Bootstrap (opcional si lo usas)
 @import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css";
 
+// Estilos generales
 body {
     font-family: "Arial", sans-serif;
     background: linear-gradient(135deg, #f4f4f4, #dcdcdc);
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+// Header fijo en la parte superior
 header {
     position: fixed;
     top: 0;
@@ -18,190 +24,187 @@ header {
     align-items: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+}
 
-    .logo-usuario {
-        display: flex;
-        align-items: center;
-        
-        .carrito-icon {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-        
-        h1 {
-            font-size: 1.5rem;
-            color: #333;
-            font-weight: bold;
-            margin: 0;
-        }
-        
-        .nombre-usuario {
-            font-size: 1rem;
-            color: #666;
-            margin-left: 15px;
-        }
+.logo-usuario {
+    display: flex;
+    align-items: center;
+
+    .carrito-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
     }
 
-    .navegacion {
-        display: flex;
-        gap: 15px;
+    h1 {
+        font-size: 1.5rem;
+        color: #333;
+        font-weight: bold;
+        margin: 0;
+    }
+}
 
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            
-            &:hover {
-                color: #007bff;
-            }
+.navegacion {
+    display: flex;
+    gap: 15px;
+
+    a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #007bff;
         }
     }
 }
 
+// Contenido principal centrado correctamente
 .contenido-principal {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
+    padding-top: 80px;
+    background: url('/img/FotoFondoHome.jpg') no-repeat center center/cover;
     height: 100vh;
-    padding-top: 80px; 
 }
 
-.formulario-login {
-    background: white;
+// Estilos de la tarjeta de inicio de sesión
+.login-card {
+    background: rgba(255, 255, 255, 0.95);
     width: 100%;
-    max-width: 400px;
-    padding: 20px;
+    max-width: 350px;
+    padding: 25px;
     border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    
-    label {
-        font-weight: bold;
-        color: #333;
-    }
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-    input {
-        width: 100%;
-        padding: 10px;
-        margin: 8px 0;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 1rem;
-    }
+.user-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    content: url('/img/Usuario.jpg');
+}
 
-    .botones {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 15px;
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
 
-        button {
-            padding: 10px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s ease;
+label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
 
-            &.boton-iniciar-sesion {
-                background: #007bff;
-                color: white;
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
 
-                &:hover {
-                    background: #0056b3;
-                }
-            }
-
-            &.boton-registrarse {
-                background: #fff;
-                color: #007bff;
-                border: 1px solid #007bff;
-
-                &:hover {
-                    background: #007bff;
-                    color: white;
-                }
-            }
-        }
+    &:focus {
+        border: 1px solid #007bff;
+        outline: none;
     }
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
+.extra-options {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.reset-password {
+  color: #007bff;
+  font-size: 0.9rem;
+  display: inline;
+  white-space: nowrap;
+  margin-left: 100px;
+  &:hover {
+      text-decoration: underline;
+  }
+}
+
+.btn-login {
     width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    transition: background 0.3s ease;
+
+    &:hover {
+        background: #0056b3;
+    }
+}
+
+.signup-link {
+    margin-top: 12px;
+    font-size: 0.9rem;
+}
+
+// Footer estilizado
+footer {
     background: white;
     padding: 10px;
     text-align: center;
     box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
-
-    .footer-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-
-        .separador {
-            color: #ccc;
-        }
-
-        .phone,
-        .email {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .close-button {
-            cursor: pointer;
-            font-weight: bold;
-            color: red;
-        }
-    }
 }
 
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.phone,
+.email {
+    font-weight: bold;
+    color: #333;
+}
+
+.close-button {
+    cursor: pointer;
+    font-weight: bold;
+    color: red;
+}
+
+// Diseño responsivo
 @media (max-width: 768px) {
     header {
         flex-direction: column;
         text-align: center;
-
-        .logo-usuario {
-            flex-direction: column;
-            align-items: center;
-            
-            h1 {
-                font-size: 1.2rem;
-            }
-
-            .nombre-usuario {
-                font-size: 0.9rem;
-            }
-        }
-
-        .navegacion {
-            flex-direction: column;
-            margin-top: 10px;
-
-            a {
-                font-size: 1rem;
-            }
-        }
     }
 
     .contenido-principal {
         padding-top: 100px;
     }
 
-    .formulario-login {
+    .login-card {
         width: 90%;
-    }
-
-    .botones {
-        flex-direction: column;
-    }
-
-    footer {
-        font-size: 0.9rem;
     }
 }

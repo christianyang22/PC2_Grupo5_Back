@@ -14,18 +14,27 @@
 </header>
 
 <main class="contenido-principal">
-  <div class="formulario-login">
-      <label for="usuario">Usuario</label>
-      <input type="text" id="usuario" placeholder="Ingresa tu usuario">
-      
-      <label for="contrasena">Contraseña</label>
-      <input type="password" id="contrasena" placeholder="Ingresa tu contraseña">
-      
-      <div class="botones">
-          <button class="boton-iniciar-sesion">Iniciar sesión</button>
-          <button class="boton-registrarse">Registrarse</button>
-      </div>
-  </div>
+  <div class="login-card">
+    <img src="img/user-icon.png" alt="Usuario" class="user-icon">
+    <h2>Bienvenido a Click&Shop</h2>
+
+    <form>
+        <label for="email">Email or Phone</label>
+        <input type="text" id="email" placeholder="Enter your email or phone">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password">
+
+        <div class="extra-options">
+            <input type="checkbox" id="keep-signed-in">
+            <a href="#" class="reset-password">Reset Password</a>
+        </div>
+
+        <button class="btn-login">Iniciar Sesión</button>
+
+        <p class="signup-link">¿Aún no tienes cuenta? <a href="registro.html">Registrarse</a></p>
+    </form>
+</div>
 </main>
 
 <footer>

@@ -8,34 +8,61 @@
 
 
 header {
-    background-color: white; 
+    background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.barra-navegacion {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.contenedor {
+    width: 100%;
     padding: 10px 20px;
 }
 
-.navegacion-izquierda,
-.navegacion-derecha {
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
+.contenedor_fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.margen_derecho {
+    margin-right: 10px;
+}
+
+.marca {
+    margin-right: auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
     display: flex;
     align-items: center;
-
-    a {
-        margin-right: 20px;
-        text-decoration: none;
-        color: black; 
-        font-size: 16px;
-    }
 }
 
-.logo {
-    font-size: 40px;
+.lista_navegacion {
+    display: flex;
+    list-style: none;
+}
+
+.elemento_navegacion {
+    margin: 0 10px;
+}
+
+.enlace_navegacion {
+    text-decoration: none;
     color: black;
+    padding: 10px;
+    transition: color 0.3s ease;
 }
+
+
+
 
 main {
     flex: 1;
@@ -45,7 +72,6 @@ main {
 .contenedor-busqueda {
     display: flex;
     justify-content: center;
-    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -54,60 +80,99 @@ main {
     padding: 8px;
     border: 1px solid lightgray;
     border-radius: 4px;
-    font-size: 14px;
 }
 
 .boton-buscar {
     margin-left: 10px;
     padding: 8px 16px;
-    background-color: dodgerblue; 
-    color: white; 
+    background-color: dodgerblue;
+    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
 }
 
 .cuadrícula-productos {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 20px;
+    gap: 20px;
 }
 
 .tarjeta-producto {
-    background-color: gainsboro; 
-    width: 100%;
+    background-color: gainsboro;
     height: 150px;
     border-radius: 4px;
 }
 
-footer {
-    background-color: lightgray; 
-    padding: 10px 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
+.pie-pagina {
     width: 100%;
+    background: white;
+    padding: 20px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 0.8rem;
 }
 
-.contenido-pie {
-    display: inline-block;
+.contenedor-pie {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
-.telefono,
-.boton-cerrar,
-.email {
-    font-size: 14px;
-    margin: 0 5px;
+.seccion-pie {
+    width: 25%;
+    padding: 10px;
 }
 
-.separador {
-    color: gray;
+.titulo-pie {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }
 
-.perfil {
-    width: 40px; 
-    height: 40px;
-    object-fit: cover; 
-    border-radius: 50%; 
+.lista-pie li {
+    margin-bottom: 5px;
+}
+
+.lista-pie li a {
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s ease;
+}
+
+.lista-pie li a:hover {
+    color: #007bff;
+}
+
+.iconos-redes {
+    display: flex;
+    gap: 35px;
+}
+
+.iconos-redes a img {
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.3s ease;
+}
+
+.iconos-redes a img:hover {
+    opacity: 0.7;
+}
+
+.pie-inferior {
+    text-align: center;
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .contenedor-pie {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .seccion-pie {
+        width: 100%;
+        text-align: center;
+    }
 }

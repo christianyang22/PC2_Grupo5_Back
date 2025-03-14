@@ -1,16 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click&Shop</title>
+</head>
+
+<body>
+
 <header>
-  <nav class="barra-navegacion">
-    <div class="navegacion-izquierda">
-      <a href="/home">Inicio</a>
-      <a href="/supermercados">Supermercado</a>
-    </div>
-    <h1 class="logo">Click&Shop</h1>
-    <div class="navegacion-derecha">
-      <a  href="/favoritos">Favoritos</a>
-      <a href="/filtros">Filtros</a>
-      <img src="img/profile.png" alt="perfil" class="perfil">
-    </div>
-  </nav>
+  <div class="contenedor">
+    <nav class="barra navegacion">
+      <div class="contenedor_fluid">
+        <img src="img/carrito.png" alt="carrito" width="30" height="30" class="margen_derecho">
+        <a class="marca" href="/home">Click&Shop</a>
+        <div class="colapsar" id="menu">
+          <ul class="lista_navegacion">
+            <li class="elemento_navegacion"><a class="enlace_navegacion" href="/home">Inicio</a></li>
+            <li class="elemento_navegacion"><a class="enlace_navegacion" href="/productos">Productos</a></li>
+            <li class="elemento_navegacion"><a class="enlace_navegacion activo" href="/supermercados">Supermercados</a></li>
+            <li class="elemento_navegacion"><a class="enlace_navegacion" href="#">Favoritos</a></li>
+            <li class="elemento_navegacion"><a class="enlace_navegacion" href="#">Filtros</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <main>
@@ -33,12 +49,42 @@
   </section>
 </main>
 
-<footer>
-  <div class="contenido-pie">
-    <span class="telefono">+34 0000000000</span>
-    <span class="separador"> | </span>
-    <span class="boton-cerrar">X</span>
-    <span class="separador"> | </span>
-    <span class="email">clickshop&#64;gmail.com</span>
+<footer class="pie-pagina">
+  <div class="contenedor-pie">
+    <div class="seccion-pie">
+      <h4 class="titulo-pie">Sobre Nosotros</h4>
+      <ul class="lista-pie">
+        <li><a href="#">Quiénes somos</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+        <li><a href="#">Términos y condiciones</a></li>
+      </ul>
+    </div>
+    <div class="seccion-pie">
+      <h4 class="titulo-pie">Ayuda</h4>
+      <ul class="lista-pie">
+        <li><a href="#">Preguntas frecuentes</a></li>
+        <li><a href="#">Soporte</a></li>
+      </ul>
+    </div>
+    <div class="seccion-pie">
+      <h4 class="titulo-pie">Redes Sociales</h4>
+      <div class="iconos-redes">
+        <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="img/x.png" alt="Twitter"></a>
+        <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+      </div>
+    </div>
+    <div class="seccion-pie">
+      <h4 class="titulo-pie">Contacto</h4>
+      <p class="contacto-pie">Teléfono: +34 0000000000</p>
+      <p class="contacto-pie">Email: <a href="mailto:clickshop@gmail.com">clickshop&#64;gmail.com</a></p>
+    </div>
+  </div>
+  <div class="pie-inferior">
+    <p>&copy; 2024 Click&Shop. Todos los derechos reservados.</p>
   </div>
 </footer>
+
+</body>
+</html>

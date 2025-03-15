@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return response()->json(Product::all());
+        return Product::obtenerProductosPaginados(100);
     }
 
     public function show($id)
@@ -95,8 +95,3 @@ class ProductController extends Controller
         return response()->json($query->get());
     }
 }
-
-
-
-
-

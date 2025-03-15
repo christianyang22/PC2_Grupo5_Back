@@ -35,12 +35,16 @@ class Product extends Model
         return $this->hasMany(Favourite::class, 'id_producto');
     }
 
-    // Corregir la URL de las imágenes antes de devolverlas
     public function getLinkImagenAttribute($value)
     {
         if (strpos($value, 'product_imaes') !== false) {
             return str_replace('product_imaes', 'product_images', $value);
         }
         return $value;
+    }
+
+    public static function obtenerProductosPaginados($cantidad = 100)
+    {
+        return self::paginate($cantidad);
     }
 }

@@ -4,7 +4,7 @@ import { ProductosComponent } from './productos/productos.component';
 
 const routes: Routes = [
   { path: 'productos', component: ProductosComponent },
-  { path: '', redirectTo: 'productos', pathMatch: 'full' } // Redirección por defecto
+  { path: '', redirectTo: 'productos', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -6,38 +6,53 @@ import { CommonModule } from '@angular/common';
 interface Producto {
   id: number;
   nombre: string;
-  link_imagen: string;  // <- Coincide con el backend
+  link_imagen: string;
   supermercado: string;
 }
 
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule], // <-- IMPORTANTE: Agregar CommonModule aquí
+  imports: [CommonModule],
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.scss']
 })
 
 export class ProductosComponent implements OnInit {
   productos: Producto[] = [];
+  currentPage: number = 1;
+  totalPages: number = 1;
 
   constructor(private productosService: ProductosService) {}
 
   ngOnInit(): void {
-    this.productosService.obtenerProductos().subscribe({
-      next: (data: Producto[]) => {
-        console.log("Datos recibidos:", data);
-        
-        // Verifica si data es un array antes de asignarlo
-        if (Array.isArray(data)) {
-          this.productos = data;
-        } else {
-          console.error("La API no devolvió un array de productos:", data);
-        }
+    this.cargarProductos();
+  }
+
+  cargarProductos(): void {
+    this.productosService.obtenerProductos(this.currentPage).subscribe({
+      next: (data: any) => {
+        console.log("Productos cargados:", data);
+        this.productos = data.data;
+        this.totalPages = data.last_page;
       },
       error: (error: HttpErrorResponse) => {
         console.error('Error al obtener productos:', error.message);
       }
     });
+  }
+
+  siguientePagina(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.cargarProductos();
+    }
+  }
+
+  anteriorPagina(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.cargarProductos();
+    }
   }
 }

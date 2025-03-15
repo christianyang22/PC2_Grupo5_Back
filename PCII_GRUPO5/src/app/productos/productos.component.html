@@ -31,22 +31,22 @@
 
 <main>
   <div class="contenedor-busqueda">
-    <input type="text" class="entrada-busqueda" placeholder="Escribe tú búsqueda aquí">
+    <input type="text" class="entrada-busqueda" placeholder="Escribe tu búsqueda aquí">
     <button class="boton-buscar">Buscar</button>
   </div>
-
+  
   <section class="cuadrícula-productos">
-    <div class="tarjeta-producto"></div>
-    <div class="tarjeta-producto"></div>
-    <div class="tarjeta-producto"></div>
-    <div class="tarjeta-producto"></div>
-    <div class="tarjeta-producto"></div>
-    <div class="tarjeta-producto"></div>
-    <div class="tarjeta-producto"></div>
-    <div class="tarjeta-producto"></div>
-    <div class="tarjeta-producto"></div>
-    <div class="tarjeta-producto"></div>
-  </section>
+    <div *ngIf="productos.length === 0">Cargando productos...</div>
+  
+    <div *ngFor="let producto of productos" class="tarjeta-producto">
+      <img [src]="producto.link_imagen || 'assets/placeholder.jpg'" 
+           alt="{{ producto.nombre }}" 
+           width="150" 
+           onerror="this.onerror=null; this.src='assets/placeholder.jpg';">
+      <h3>{{ producto.nombre }}</h3>
+      <p>Supermercado: {{ producto.supermercado }}</p>
+    </div>
+  </section>   
 </main>
 
 <footer class="pie-pagina">

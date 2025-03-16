@@ -7,6 +7,7 @@ interface Producto {
   nombre: string;
   link_imagen: string;
   supermercado: string;
+  precio: DoubleRange;
 }
 
 @Injectable({

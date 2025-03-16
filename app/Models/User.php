@@ -12,6 +12,9 @@ class User extends Authenticatable
 
     protected $table = 'usuarios';
 
+    protected $primaryKey = 'id_usuario';
+    public $timestamps = false;
+
     protected $fillable = [
         'id_usuario',
         'usuario',
@@ -33,4 +36,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Favourite::class, 'id_usuario');
     }
+
+    public function getAuthPassword()
+    {
+        return $this->hashed_password;
+    }
+
 }

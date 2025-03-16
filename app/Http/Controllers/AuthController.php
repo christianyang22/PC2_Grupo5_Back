@@ -12,17 +12,23 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validatedData = $request->validate([
-            'username' => 'required|string|unique:users',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:6',
-            'rol' => 'required|string'
+            'usuario'           => 'required|string|unique:usuarios,usuario',
+            'email'             => 'required|string|email|unique:usuarios,email',
+            'password'          => 'required|string|min:6',
+            'rol'               => 'required|integer',
+            'nombre'            => 'required|string',
+            'apellido'          => 'required|string',
+            'fecha_nacimiento'  => 'required|date'
         ]);
 
         $user = User::create([
-            'username' => $validatedData['username'],
-            'email' => $validatedData['email'],
+            'usuario'         => $validatedData['usuario'],
+            'email'           => $validatedData['email'],
             'hashed_password' => Hash::make($validatedData['password']),
-            'rol' => $validatedData['rol']
+            'rol'             => $validatedData['rol'],
+            'nombre'          => $validatedData['nombre'],
+            'apellido'        => $validatedData['apellido'],
+            'fecha_nacimiento'=> $validatedData['fecha_nacimiento'] ?? null,
         ]);
 
         return response()->json(['message' => 'Usuario registrado con éxito'], 201);
@@ -31,7 +37,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|string|email',
+            'usuario'  => 'required|string',
             'password' => 'required|string'
         ]);
 
@@ -54,6 +60,4 @@ class AuthController extends Controller
     {
         return response()->json(Auth::user());
     }
-
-    
 }

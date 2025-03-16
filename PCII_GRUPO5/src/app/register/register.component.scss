@@ -71,23 +71,23 @@ body::before {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  padding-top: 50px;
-  min-height: 65vh;
+  padding-top: 80px;
+  min-height: 88vh;
 }
 
-.login-container {
+.register-container {
   display: flex;
-  width: 750px;
+  width: 900px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin: auto;
-  margin-top: 65px;
-  height: 350px;
+  margin-top: 30px;
+  height: auto;
 }
 
-.login-image {
+.register-image {
   width: 50%;
   background: gray;
   display: flex;
@@ -95,25 +95,25 @@ body::before {
   justify-content: center;
 }
 
-.login-image img {
+.register-image img {
   max-width: 80%;
 }
 
-.login-form {
-  width: 60%;
+.register-form {
+  width: 50%;
   padding: 40px;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.login-title {
+.register-title {
   font-weight: bold;
   font-size: 24px;
   margin-bottom: 20px;
 }
 
-.login-group {
+.register-group {
   display: grid;
   grid-template-columns: 30% 70%;
   align-items: center;
@@ -135,17 +135,17 @@ body::before {
     font-size: 16px;
     transition: border-bottom 0.3s;
   }
-  
+
   input:hover:not(:focus) {
     border-bottom: 3px solid #007bff;
   }
-  
+
   input:focus {
     border-bottom: 3px solid #007bff;
   }
 }
 
-.login-button {
+.register-button {
   width: 100%;
   padding: 12px;
   background: #000;
@@ -158,13 +158,13 @@ body::before {
   transition: background 0.3s;
 }
 
-.login-button:hover {
+.register-button:hover {
   background: #333;
 }
 
 .error-popup {
   position: fixed;
-  top: 70px;
+  top: 80px;
   right: 20px;
   background: #f8d7da;
   color: #721c24;
@@ -187,19 +187,19 @@ body::before {
   }
 }
 
-.login-options {
+.register-options-inicio {
   margin-top: 15px;
   font-size: 15px;
-  text-align: center;
+  text-align: left;
 }
 
-.register-click {
+.register-options-inicio a {
   color: #007bff;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.register-click:hover {
+.register-options-inicio a:hover {
   color: #0056b3;
 }
 
@@ -284,22 +284,27 @@ body::before {
     flex-direction: column;
     text-align: center;
   }
+
   .contenido-principal {
     padding-top: 100px;
   }
-  .login-container {
-    width: 90%;
+
+  .register-container {
+    width: 80%;
     flex-direction: column;
   }
-  .login-image {
+
+  .register-image {
     width: 100%;
     background: gray;
     padding: 20px 0;
   }
-  .login-form {
+
+  .register-form {
     width: 100%;
   }
-  .login-group {
+
+  .register-group {
     grid-template-columns: 1fr;
   }
 }

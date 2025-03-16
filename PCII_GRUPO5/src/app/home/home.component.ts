@@ -23,11 +23,14 @@ export class HomeComponent {
   onLogin(): void {
     this.authService.login(this.loginData.usuario, this.loginData.password).subscribe(
       response => {
-        console.log('Login exitoso', response);
+        console.log('Login exitoso:', response);
+        
+        localStorage.setItem('usuario', JSON.stringify({ usuario: this.loginData.usuario }));
+
         window.location.href = '/productos';
       },
       error => {
-        console.error('Error en login', error);
+        console.error('Error en login:', error);
         this.errorMessages = ['Credenciales incorrectas.'];
       }
     );

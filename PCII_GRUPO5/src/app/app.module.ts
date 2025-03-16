@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductosComponent } from './productos/productos.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,11 @@ import { ProductosComponent } from './productos/productos.component';
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class ProductosModule { }

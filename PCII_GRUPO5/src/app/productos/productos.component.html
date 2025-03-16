@@ -9,51 +9,62 @@
 
 <body>
 
-<header>
-  <div class="contenedor">
-    <nav class="barra navegacion">
-      <div class="contenedor_fluid">
-        <img src="img/carrito.png" alt="carrito" width="30" height="30" class="margen_derecho">
-        <a class="marca" href="/home">Click&Shop</a>
-        <div class="colapsar" id="menu">
-          <ul class="lista_navegacion">
-            <li class="elemento_navegacion"><a class="enlace_navegacion" href="/home">Inicio</a></li>
-            <li class="elemento_navegacion"><a class="enlace_navegacion" href="/productos">Productos</a></li>
-            <li class="elemento_navegacion"><a class="enlace_navegacion activo" href="/supermercados">Supermercados</a></li>
-            <li class="elemento_navegacion"><a class="enlace_navegacion" href="#">Favoritos</a></li>
-            <li class="elemento_navegacion"><a class="enlace_navegacion" href="#">Filtros</a></li>
-          </ul>
+  <header>
+    <div class="contenedor">
+      <nav class="barra navegacion">
+        <div class="contenedor_fluid">
+          <img src="img/carrito.png" alt="carrito" width="30" height="30" class="margen_derecho">
+          <a class="marca" href="/home">Click&Shop</a>
+          <div class="colapsar" id="menu">
+            <ul class="lista_navegacion">
+              <li class="elemento_navegacion"><a class="enlace_navegacion" href="/home">Inicio</a></li>
+              <li class="elemento_navegacion"><a class="enlace_navegacion" href="/productos">Productos</a></li>
+              <li class="elemento_navegacion"><a class="enlace_navegacion activo" href="/supermercados">Supermercados</a></li>
+              <li class="elemento_navegacion"><a class="enlace_navegacion" href="#">Favoritos</a></li>
+              <li class="elemento_navegacion"><a class="enlace_navegacion" href="#">Filtros</a></li>
+                      <li *ngIf="usuarioAutenticado" class="elemento_navegacion">
+                <button class="boton-cerrar-sesion" (click)="cerrarSesion()">Cerrar Sesión</button>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-  </div>
-</header>
+      </nav>
+    </div>
+  </header>
+  
 
 <main>
   <div class="contenedor-busqueda">
-    <input type="text" class="entrada-busqueda" placeholder="Escribe tu búsqueda aquí">
-    <button class="boton-buscar">Buscar</button>
+    <input 
+      type="text"
+      class="entrada-busqueda"
+      placeholder="Escribe tu búsqueda aquí..."
+      [(ngModel)]="terminoBusqueda">
+    <button class="boton-buscar" (click)="buscar()">Buscar</button>
   </div>
   
+  <p *ngIf="terminoBusqueda">Buscando: "{{ terminoBusqueda }}"</p>
+  
+  
   <section class="cuadrícula-productos">
-    <div *ngIf="productos.length === 0">Cargando productos...</div>
-
-    <div *ngFor="let producto of productos" class="tarjeta-producto">
+    <div *ngIf="productosFiltrados.length === 0">No se encontraron productos.</div>
+  
+    <div *ngFor="let producto of obtenerProductosPaginaActual()" class="tarjeta-producto">
       <img [src]="producto.link_imagen || 'assets/placeholder.jpg'" 
            alt="{{ producto.nombre }}" 
-           width="150"
-           onerror="this.onerror=null; this.src='assets/placeholder.jpg';">
+           width="150">
       <h3>{{ producto.nombre }}</h3>
       <p>Supermercado: {{ producto.supermercado }}</p>
       <p>Precio: {{ producto.precio }} €</p>
     </div>
   </section>
-
+  
   <div class="paginacion">
     <button (click)="anteriorPagina()" [disabled]="currentPage === 1">Anterior</button>
     <span>Página {{ currentPage }} de {{ totalPages }}</span>
     <button (click)="siguientePagina()" [disabled]="currentPage === totalPages">Siguiente</button>
   </div>
+  
 </main>
 
 <footer class="pie-pagina">

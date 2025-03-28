@@ -53,7 +53,7 @@ export class ProductosComponent implements OnInit {
   cerrarSesion() {
     localStorage.removeItem('usuario'); 
     this.usuarioAutenticado = false;
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
   cargarProductos() {

@@ -6,33 +6,40 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\ComparisonController;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
-//Debo revisar si falta por crear alguna función en los controladores, pruebaaaa
+// Test endpoint
 Route::get('/test', function () {
     return response()->json(['message' => 'API funcionando']);
 });
 
-// Rutas públicas de autenticación
+// Rutas públicas
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/products/public', [ProductController::class, 'index']);
 
-// Rutas protegidas por JWT (todos los usuarios autenticados)
+// Rutas protegidas
 Route::middleware(['jwt.auth'])->group(function () {
 
-    // Datos del usuario autenticado
     Route::get('/user', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    // Gestión de perfil personal
     Route::put('/update-profile', [UserController::class, 'updateProfile']);
     Route::delete('/delete-account', [UserController::class, 'deleteAccount']);
 
     // Rutas para clientes (rol 2)
-    Route::middleware(['check.role:2'])->group(function () {
+    Route::group([
+        'middleware' => function ($request, $next) {
+            $user = JWTAuth::parseToken()->authenticate();
+            if ($user->rol != 2) {
+                return response()->json(['error' => 'No autorizado (rol ≠ 2)'], 403);
+            }
+            return $next($request);
+        }
+    ], function () {
         Route::get('/products', [ProductController::class, 'index']);
         Route::get('/products/{id}', [ProductController::class, 'show']);
 
-        // Filtros y consultas
         Route::get('/products/filter/supermarket/{supermarket}', [ProductController::class, 'filterBySupermarket']);
         Route::get('/products/filter/price/{min}/{max}', [ProductController::class, 'filterByPrice']);
         Route::get('/products/filter/nutrition', [ProductController::class, 'filterByNutrition']);
@@ -43,27 +50,31 @@ Route::middleware(['jwt.auth'])->group(function () {
         Route::get('/products/best-worst', [ProductController::class, 'getBestWorstRatedProducts']);
         Route::get('/supermarkets', [ProductController::class, 'getAvailableSupermarkets']);
 
-        // Favoritos
         Route::apiResource('favourites', FavouriteController::class);
         Route::post('/favourites/add', [FavouriteController::class, 'addToFavourites']);
         Route::get('/favourites/list', [FavouriteController::class, 'listFavourites']);
         Route::delete('/favourites/remove/{id}', [FavouriteController::class, 'removeFavourite']);
         Route::put('/favourites/update/{id}', [FavouriteController::class, 'updateFavouriteQuantity']);
 
-        // Comparaciones y recomendaciones
         Route::get('/compare/{product_id}', [ComparisonController::class, 'compareSupermarkets']);
         Route::post('/compare-nutrients', [ComparisonController::class, 'compareNutrients']);
         Route::get('/recommendations', [ComparisonController::class, 'getRecommendations']);
     });
 
-    // Rutas solo para administradores (rol 1)
-    Route::middleware(['check.role:1'])->group(function () {
-        // CRUD de productos
+    // Rutas para administradores (rol 1)
+    Route::group([
+        'middleware' => function ($request, $next) {
+            $user = JWTAuth::parseToken()->authenticate();
+            if ($user->rol != 1) {
+                return response()->json(['error' => 'No autorizado (rol ≠ 1)'], 403);
+            }
+            return $next($request);
+        }
+    ], function () {
         Route::post('/products', [ProductController::class, 'store']);
         Route::put('/products/{id}', [ProductController::class, 'update']);
         Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
-        // Gestión de usuarios (admin)
         Route::get('/users', [UserController::class, 'getUsers']);
         Route::get('/users/search/{email}', [UserController::class, 'searchByEmail']);
         Route::get('/users/{id}', [UserController::class, 'getUserById']);

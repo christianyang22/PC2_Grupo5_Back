@@ -16,7 +16,8 @@ Route::get('/test', function () {
 // Rutas públicas
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/products/public', [ProductController::class, 'index']);
+#Route::get('/products/public', [ProductController::class, 'index']);
+Route::get('/products', [ProductController::class, 'index']);
 
 // Rutas protegidas
 Route::middleware(['jwt.auth'])->group(function () {
@@ -37,7 +38,6 @@ Route::middleware(['jwt.auth'])->group(function () {
             return $next($request);
         }
     ], function () {
-        Route::get('/products', [ProductController::class, 'index']);
         Route::get('/products/{id}', [ProductController::class, 'show']);
 
         Route::get('/products/filter/supermarket/{supermarket}', [ProductController::class, 'filterBySupermarket']);

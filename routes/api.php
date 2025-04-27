@@ -39,7 +39,6 @@ Route::middleware(['jwt.auth'])->group(function () {
         }
     ], function () {
         Route::get('/products/{id}', [ProductController::class, 'show']);
-
         Route::get('/products/filter/supermarket/{supermarket}', [ProductController::class, 'filterBySupermarket']);
         Route::get('/products/filter/price/{min}/{max}', [ProductController::class, 'filterByPrice']);
         Route::get('/products/filter/nutrition', [ProductController::class, 'filterByNutrition']);

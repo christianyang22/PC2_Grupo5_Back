@@ -10,6 +10,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
+
     public function register(Request $request)
     {
         $validatedData = $request->validate([
@@ -71,6 +72,7 @@ class AuthController extends Controller
     {
         try {
             JWTAuth::invalidate(JWTAuth::getToken());
+
             return response()->json(['message' => 'Sesión cerrada']);
         } catch (JWTException $e) {
             return response()->json(['error' => 'No se pudo cerrar sesión'], 500);

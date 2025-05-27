@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\ComparisonController;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Http\Controllers\HeaderConfigController;
 
 
 Route::get('/products/filter/supermarket/{supermarket}', [ProductController::class, 'filterBySupermarket']);
@@ -24,6 +25,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 #Route::get('/products/public', [ProductController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
+Route::get('/config/header', [HeaderConfigController::class, 'get']);
 
 // Rutas protegidas
 Route::middleware(['jwt.auth'])->group(function () {
@@ -48,7 +50,6 @@ Route::middleware(['jwt.auth'])->group(function () {
         }
     ], function () {
        
-        
         Route::get('/products/filter/price/{min}/{max}', [ProductController::class, 'filterByPrice']);
         Route::get('/products/filter/nutrition', [ProductController::class, 'filterByNutrition']);
         Route::get('/products/offers', [ProductController::class, 'getOffers']);
@@ -80,7 +81,7 @@ Route::middleware(['jwt.auth'])->group(function () {
         Route::post('/products', [ProductController::class, 'store']);
         Route::put('/products/{id}', [ProductController::class, 'update']);
         Route::delete('/products/{id}', [ProductController::class, 'destroy']);
-
+        Route::put('/config/header', [HeaderConfigController::class, 'update']);
         Route::get('/users', [UserController::class, 'getUsers']);
         Route::get('/users/search/{email}', [UserController::class, 'searchByEmail']);
         Route::get('/users/{id}', [UserController::class, 'getUserById']);

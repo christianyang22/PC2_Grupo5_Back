@@ -13,7 +13,7 @@ class ProductResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->getKey(),
             'nombre' => $this->nombre,
             'enlace' => $this->enlace,
             'imagen' => $this->link_imagen,
@@ -31,7 +31,9 @@ class ProductResource extends JsonResource
             'valoracion' => $this->valoracion,
             'supermercado' => $this->supermercado,
             'cluster' => $this->cluster,
-            'creado_en' => $this->created_at->format('Y-m-d H:i:s'),
+            'creado_en' => $this->created_at 
+                                ? $this->created_at->format('Y-m-d H:i:s')
+                                : null,
         ];
     }
 }

@@ -21,6 +21,29 @@ class ProductController extends Controller
         return new ProductResource($product);
     }
 
+    public function update(Request $request, $id)
+    {
+        $data = $request->validate([
+            'nombre'       => 'sometimes|required|string|max:255',
+            'precio'       => 'sometimes|required|numeric',
+            'supermercado' => 'sometimes|required|string',
+        ]);
+
+        $product = Product::findOrFail($id);
+        $product->fill($data);
+        $product->save();
+
+        return new ProductResource($product);
+    }
+
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return response()->json(null, 204);
+    }
+
     public function getOffers()
     {
         return response()->json(Product::whereNotNull('oferta')->get());
